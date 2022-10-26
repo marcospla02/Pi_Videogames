@@ -1,0 +1,75 @@
+.detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5vh 30vh 20vh 20vh;
+  background-image: url("../../images/fondoCallOfDuty.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  position: absolute;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  color: white;
+}
+
+.button {
+  border: transparent;
+  font-size: 1.3em;
+  margin-top: 5%;
+  margin-bottom: 3%;
+  border: solid 2px transparent;
+  border-radius: 9999px;
+  cursor: pointer;
+  color: black;
+  background-color: rgba(220, 220, 220, 0.508);
+}
+
+.button:hover {
+  background-color: #3737376f;
+  transition: background-color 0.7s;
+}
+
+.img {
+  width: 450px;
+  height: 400px;
+  border-radius: 10em;
+  align-items: center;
+  margin-top: 11%;
+  margin-left: 5px;
+}
+
+.losDos {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid;
+  border-radius: 9px;
+  margin-left: 10%;
+  margin-right: 10%;
+  backdrop-filter: blur(10px);
+  margin-bottom: 3%;
+  margin-top: 3%;
+}
+
+.divInfo {
+  text-align: center;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.description {
+  display: flex;
+  justify-content: center;
+  width: 96.5%;
+  height: 200px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.4rem;
+  overflow: auto;
+  color: white;
+}
+::-webkit-scrollbar {
+  display: none;
+}

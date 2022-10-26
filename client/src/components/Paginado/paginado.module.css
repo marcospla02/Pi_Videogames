@@ -1,0 +1,42 @@
+/* .paginado {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+} */
+/* .number {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  cursor: pointer;
+} */
+
+.number {
+  margin-left: 0.999vh;
+  font-size: 100%;
+  border: transparent;
+  border-radius: 5px;
+  font-size: 20px;
+  padding-left: 1vh;
+  cursor: pointer;
+  background-color: rgba(220, 220, 220, 0.508);
+  padding: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.number:hover {
+  background-color: #3737376f;
+  transition: background-color 0.7s;
+}
+
+.pag {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* margin-left: 9.5%; */
+  margin-left: 39%;
+  margin-top: 2%;
+  padding: 1vh;
+}

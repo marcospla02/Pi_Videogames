@@ -1,0 +1,11 @@
+.image {
+  width: 250px;
+  height: 200px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+/* .genres {
+  display: flex;
+  flex-direction: column;
+} */

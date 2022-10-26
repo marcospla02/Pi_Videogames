@@ -1,0 +1,164 @@
+.body {
+  background-image: url("../../images/fondoCallOfDuty.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.all {
+  display: flex;
+  justify-content: center;
+  border: 2px solid;
+  border-radius: 9px;
+  padding-left: 5%;
+  backdrop-filter: blur(10px);
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-bottom: auto;
+  margin-top: 3%;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4%;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 50%;
+  /* border: 0.5px solid white; */
+  border-radius: 3em;
+  padding: 1% 3%;
+  margin-top: -1%;
+  margin-bottom: 10px;
+}
+
+.input {
+  margin-bottom: 1.5rem;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 200;
+}
+
+.img {
+  margin-bottom: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 10px;
+}
+
+h2 {
+  text-align: center;
+  color: white;
+}
+
+.losDos {
+  color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: -465px;
+  margin-left: 40em;
+  height: 27em;
+  overflow: auto;
+  width: -50%;
+  /* border: 2px solid white; */
+  border-radius: 5px;
+}
+
+.genre {
+  overflow: auto;
+}
+
+.allPlatform {
+  position: relative;
+  margin-top: 0px;
+  margin-right: 45%;
+  width: 1250px;
+  overflow: auto;
+  color: white;
+}
+
+.platform {
+  width: 100px;
+}
+
+span {
+  color: red;
+}
+
+.select {
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: background-color 0.5s;
+  cursor: pointer;
+  color: black;
+  background-color: rgba(220, 220, 220, 0.508);
+  margin-top: 1.5%;
+  margin-left: 5vh;
+}
+
+.losDos::-webkit-scrollbar {
+  display: none;
+}
+
+.button {
+  border: transparent;
+  font-size: 1.3em;
+  margin-top: 5%;
+  border: solid 2px transparent;
+  border-radius: 9999px;
+  cursor: pointer;
+  color: black;
+  background-color: rgba(220, 220, 220, 0.508);
+  padding: 5px;
+}
+
+.button:hover {
+  background-color: #3737376f;
+  transition: background-color 0.7s;
+}
+
+.back {
+  border: transparent;
+  font-size: 1.3em;
+  border: solid 2px transparent;
+  border-radius: 9999px;
+  margin-left: 300px;
+  margin-top: -100px;
+  cursor: pointer;
+  color: black;
+  background-color: rgba(220, 220, 220, 0.508);
+  padding: 5px;
+}
+
+.back:hover {
+  background-color: #3737376f;
+  transition: background-color 0.7s;
+}
+
+.buttonInput {
+  border: transparent;
+  font-size: 0.9em;
+  border: solid 2px transparent;
+  border-radius: 9999px;
+  background-color: rgba(220, 220, 220, 0.508);
+  color: black;
+  margin-left: 3px;
+  cursor: pointer;
+}
+
+.buttonInput:hover {
+  background-color: #3737376f;
+  transition: background-color 0.7s;
+}
