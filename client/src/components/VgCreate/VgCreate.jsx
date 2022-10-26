@@ -93,28 +93,32 @@ const VgCreate = () => {
   };
 
   const handlerSelect = (event) => {
-    if (input.genres.length >= 2) {
-      setDisable({ ...disable, genre: true });
+    if (!input.genres.find((gen) => gen == event.target.value)) {
+      if (input.genres.length >= 2) {
+        setDisable({ ...disable, genre: true });
+      }
+      setInput({
+        ...input,
+        genres: [...input.genres, event.target.value],
+      });
     }
-    setInput({
-      ...input,
-      genres: [...input.genres, event.target.value],
-    });
   };
 
   const handlerSelectPlatform = (event) => {
-    input.platforms.length === 0
-      ? setErrors({
-          ...errors,
-          platforms: "Platforms must have at least 2",
-          all: "All fields with * are required",
-        })
-      : setErrors({ ...errors, platforms: "", all: "" });
+    if (!input.platforms.find((plat) => plat == event.target.value)) {
+      input.platforms.length === 0
+        ? setErrors({
+            ...errors,
+            platforms: "Platforms must have at least 2",
+            all: "All fields with * are required",
+          })
+        : setErrors({ ...errors, platforms: "", all: "" });
 
-    setInput({
-      ...input,
-      platforms: [...input.platforms, event.target.value],
-    });
+      setInput({
+        ...input,
+        platforms: [...input.platforms, event.target.value],
+      });
+    }
   };
 
   const handlerSubmit = () => {
