@@ -1,11 +1,12 @@
 import React from "react";
 import style from "./paginado.module.css";
 
-const Paginated = ({ videogamesPerPage, videogames, paginated }) => {
+const Paginated = ({ videogames, paginated }) => {
   const numberPage = [];
 
-  for (let i = 0; i < Math.ceil(videogames / videogamesPerPage); i++) {
-    numberPage.push(i + 1);
+  // Math.ceil redonde para arriba -> 100/15 --> 7
+  for (let i = 0; i < Math.ceil(videogames / 15); i++) {
+    numberPage.push(i + 1); // xq +1? sino me quedaba renderizado desde la pag 0, y si inicializaba en 1 me quedaba una pag menos
   }
 
   return (

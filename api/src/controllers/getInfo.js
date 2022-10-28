@@ -19,18 +19,6 @@ const getInfo = async () => {
     return prev.concat(value.data.results);
   }, []);
 
-  // const infoApi = [1, 2, 3, 4, 5].map((page) =>
-  //   infoApi.then((page) =>
-  //     axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${page}`)
-  //   )
-  // );
-
-  // Promise.all(infoApi).then((info) =>
-  //   info.reduce((prev, current) => {
-  //     return prev.concat(current.data.results);
-  //   }, [])
-  // );
-
   const info = await apiUrl.map((game) => {
     return {
       id: game.id,

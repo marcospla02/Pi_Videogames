@@ -21,6 +21,10 @@
   margin-bottom: 0px;
 }
 
+.foto {
+  background-image: url("https://media.istockphoto.com/photos/question-mark-shaped-red-neon-light-on-black-wall-picture-id1141315710?k=20&m=1141315710&s=170667a&w=0&h=ZndCqQ8QW-NVhn1oVXD2mcqMM4TxNn-XvYkGpOqoMlc=");
+}
+
 .card {
   display: grid;
   grid-template-columns: 1fr;
@@ -62,4 +66,5 @@
 .buttons:hover {
   background-color: #3737376f;
   transition: background-color 0.7s;
+  color: white;
 }

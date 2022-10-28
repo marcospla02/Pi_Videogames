@@ -9,18 +9,17 @@ const VgCreate = () => {
   const dispatch = useDispatch();
   const vgGenres = useSelector((state) => state.vgGenres);
   const vgPlatforms = useSelector((state) => state.vgPlatforms);
-  const regExpDescription = /^.{1,255}$/;
-  const regExpName = /^[A-Za-z0-9\s]+$/g;
+  const regExpDescription = /^.{1,255}$/; // no mas de 255
+  const regExpName = /^[A-Za-z0-9\s]+$/g; // no acepta caracteres especiales
+
   const [disable, setDisable] = useState({
     genre: false,
   });
+
   const [errors, setErrors] = useState({
     name: "",
     rating: "",
-    released: "",
-    img: "",
     description: "",
-    genres: "",
     platforms: "",
     all: "",
   });
@@ -40,6 +39,7 @@ const VgCreate = () => {
   }, [dispatch]);
 
   const handlerChange = (e) => {
+    // img y released
     e.preventDefault();
     setInput({ ...input, [e.target.name]: e.target.value });
   };
@@ -47,6 +47,7 @@ const VgCreate = () => {
   const handlerName = (event) => {
     event.preventDefault();
 
+    // trim-> elimina espacio en blanco
     event.target.value.trim() === ""
       ? setErrors({
           ...errors,
@@ -59,7 +60,7 @@ const VgCreate = () => {
           name: "No special characters",
           all: "All fields with * are required",
         })
-      : setErrors({ ...errors, name: "", all: "" });
+      : setErrors({ ...errors, name: "" });
 
     setInput({ ...input, name: event.target.value });
   };
@@ -67,7 +68,10 @@ const VgCreate = () => {
   const hanlderRating = (event) => {
     event.preventDefault();
     event.target.value < 0 || event.target.value > 5
-      ? setErrors({ ...errors, rating: "The rating must be between 0 and 5" })
+      ? setErrors({
+          ...errors,
+          rating: "The rating must be between 0 and 5",
+        })
       : setErrors({ ...errors, rating: "" });
 
     setInput({ ...input, rating: event.target.value });
@@ -87,14 +91,14 @@ const VgCreate = () => {
           description: "Cannot exceed 255 characters",
           all: "All fields with * are required",
         })
-      : setErrors({ ...errors, description: "", all: "" });
+      : setErrors({ ...errors, description: "" });
 
     setInput({ ...input, description: event.target.value });
   };
 
   const handlerSelect = (event) => {
     if (!input.genres.find((gen) => gen == event.target.value)) {
-      if (input.genres.length >= 2) {
+      if (input.genres.length >= 3) {
         setDisable({ ...disable, genre: true });
       }
       setInput({
@@ -106,13 +110,14 @@ const VgCreate = () => {
 
   const handlerSelectPlatform = (event) => {
     if (!input.platforms.find((plat) => plat == event.target.value)) {
-      input.platforms.length === 0
+      input.platforms.length <= 0
         ? setErrors({
             ...errors,
-            platforms: "Platforms must have at least 2",
+            platforms:
+              "It is not an error, it is a warning, platforms must have at least 1",
             all: "All fields with * are required",
           })
-        : setErrors({ ...errors, platforms: "", all: "" });
+        : setErrors({ ...errors, platforms: "" });
 
       setInput({
         ...input,
@@ -127,8 +132,7 @@ const VgCreate = () => {
       input.name !== "" &&
       !errors.description &&
       input.description !== "" &&
-      !errors.genres &&
-      !errors.platforms &&
+      !errors.rating &&
       input.platforms.length > 0
     ) {
       dispatch(createVideogame(input));
@@ -138,12 +142,12 @@ const VgCreate = () => {
     }
   };
 
-  const handlerDelete = (el) => {
-    const genreFilter = input.genres.filter((elem) => elem !== el);
+  const handlerDelete = (name) => {
+    const genreFilter = input.genres.filter((elem) => elem !== name);
     setInput({ ...input, genres: genreFilter });
   };
-  const handlerDeleteP = (el) => {
-    const platformFilter = input.platforms.filter((elem) => elem !== el);
+  const handlerDeleteP = (name) => {
+    const platformFilter = input.platforms.filter((elem) => elem !== name);
     setInput({ ...input, platforms: platformFilter });
   };
 
@@ -193,7 +197,7 @@ const VgCreate = () => {
                   name="img"
                   value={input.img}
                   onChange={(e) => handlerChange(e)}
-                  type="url"
+                  type="text"
                   className={style.img}
                 ></input>
               </div>
@@ -201,7 +205,7 @@ const VgCreate = () => {
               <div>
                 <label>Genres: </label>
                 <select
-                  disabled={disable.genre}
+                  disabled={input.genres.length > 3 ? disable.genre : false}
                   onChange={(e) => handlerSelect(e)}
                   className={style.select}
                 >
@@ -246,14 +250,18 @@ const VgCreate = () => {
                   </optgroup>
                 </select>
               </div>
-              <br />
 
-              {errors.platforms && <span>{errors.platforms}</span>}
-              <br />
+              {errors.platforms && (
+                <p className={style.warning}>{errors.platforms}</p>
+              )}
+
               {errors.all && <span>{errors.all}</span>}
               <br />
 
-              <button type="submit" className={style.button}>
+              <button
+                type="submit"
+                className={errors.err ? style.error : style.button}
+              >
                 Create
               </button>
               <Link to="/home">

@@ -1,5 +1,4 @@
 import React from "react";
-import loading from "../../images/loading-5.gif";
 import marios from "../../images/mario-auto.gif";
 import style from "./loading.module.css";
 

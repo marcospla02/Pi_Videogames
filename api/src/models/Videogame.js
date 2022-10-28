@@ -8,8 +8,8 @@ module.exports = (sequelize) => {
     "videogame",
     {
       id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
+        type: DataTypes.UUID, //  sea unico
+        defaultValue: DataTypes.UUIDV4, // hace valores con letras y numeros
         allowNull: false,
         primaryKey: true,
       },
@@ -33,8 +33,6 @@ module.exports = (sequelize) => {
       },
       img: {
         type: DataTypes.STRING,
-        defaultValue:
-          "https://media.istockphoto.com/photos/question-mark-shaped-red-neon-light-on-black-wall-picture-id1141315710?k=20&m=1141315710&s=170667a&w=0&h=ZndCqQ8QW-NVhn1oVXD2mcqMM4TxNn-XvYkGpOqoMlc=",
       },
       createdInDb: {
         type: DataTypes.BOOLEAN,

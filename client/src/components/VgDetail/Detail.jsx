@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { cleanDetail, getVgDetail } from "../../redux/actions";
 import Loading from "../Loading/Loading";
-import VgCard from "../VgCard/Cards";
 import style from "./detail.module.css";
+import foto from "../../images/fotoDeafult.jpg";
 
 const VgDetail = (props) => {
   const dispatch = useDispatch();
@@ -15,12 +15,12 @@ const VgDetail = (props) => {
     dispatch(getVgDetail(videogameId));
 
     return () => {
-      dispatch(cleanDetail()); // para qeu se limpie el estado de detalle cuando lo saco y caundo aprete otro se ponga el nuevo y no qeude ese dilay del anterior
+      dispatch(cleanDetail()); // para que se limpie el estado de detalle cuando lo saco y caundo aprete otro se ponga el nuevo y no qeude ese dilay del anterior
     };
   }, [dispatch, videogameId]);
 
   if (Array.isArray(vgDetail)) {
-    // el detalle de los creados me venia por array
+    // el detalle de los creados me venia en un array
     vgDetail = vgDetail.find((videogame) => {
       return videogame;
     });
@@ -31,8 +31,6 @@ const VgDetail = (props) => {
     var platform = vgDetail.platforms.join(" - ");
   }
 
-  console.log(vgDetail);
-
   return (
     <div className={style.detail}>
       {Object.keys(vgDetail).length === 0 ? (
@@ -41,7 +39,7 @@ const VgDetail = (props) => {
         <div className={style.losDos}>
           <div className={style.divImg}>
             <img
-              src={vgDetail.img}
+              src={vgDetail.img ? vgDetail.img : foto}
               className={style.img}
               alt={`image game ${vgDetail.name}`}
             ></img>

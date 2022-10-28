@@ -9,7 +9,7 @@ import store from "./redux/store/index";
 
 ReactDOM.render(
   <Provider store={store}>
-    {/* si no le paso el store nunca lo voy a tener en el dom de react */}
+    {/* si no le paso el store nunca lo voy a tener en el dom de react, por lo que mi app no va a saber que estyo con redux */}
     <Router>
       <App />
     </Router>

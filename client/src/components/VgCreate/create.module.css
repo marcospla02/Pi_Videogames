@@ -127,6 +127,7 @@ span {
 .button:hover {
   background-color: #3737376f;
   transition: background-color 0.7s;
+  color: white;
 }
 
 .back {
@@ -145,6 +146,7 @@ span {
 .back:hover {
   background-color: #3737376f;
   transition: background-color 0.7s;
+  color: white;
 }
 
 .buttonInput {
@@ -161,4 +163,33 @@ span {
 .buttonInput:hover {
   background-color: #3737376f;
   transition: background-color 0.7s;
+}
+
+.error {
+  border: transparent;
+  font-size: 1.3em;
+  border: solid 2px transparent;
+  border-radius: 9999px;
+  background-color: darkgray;
+  color: black;
+  margin-left: 3px;
+  /* cursor: pointer; */
+  padding: 5px;
+}
+
+.warning {
+  background-color: rgba(255, 255, 0, 0.395);
+  border: transparent;
+  border: solid 1px transparent;
+  border-radius: 9999px;
+  /* padding: 2px; */
+}
+
+span {
+  font-weight: bold;
+  background-color: white;
+  border: 1px solid red;
+  border-radius: 10px;
+  padding-left: 4px;
+  padding-right: 4px;
 }

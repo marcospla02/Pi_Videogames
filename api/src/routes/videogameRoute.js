@@ -8,16 +8,17 @@ const getDbInfo = require("../controllers/getDbInfo");
 router.get("/", async (req, res) => {
   try {
     const { name } = req.query;
+
     const allGames = await getAllVideogames();
     if (!name) {
       return res.status(200).send(allGames);
     } else {
-      const gByNameApi = await getByName(name);
-      const findByNameDb = await getDbInfo();
-      const vgDb = await findByNameDb.filter((game) =>
-        game.name.toLowerCase().includes(name.toLowerCase())
+      const gByNameApi = await getByName(name); // busco los que estan en la api con ese nombre
+      const vgDb = await getDbInfo(); // traigo los juegos de la bd
+      const findByNameDb = await vgDb.filter(
+        (game) => game.name.toLowerCase().includes(name.toLowerCase()) // filtro para qeu me traiga los juegos de la base de datos con ese nombre
       );
-      const result = await gByNameApi.concat(vgDb);
+      const result = await gByNameApi.concat(findByNameDb); // para que me muestre todos los juegos
       if (result.length) {
         res.status(200).send(result);
       } else {
@@ -38,6 +39,7 @@ router.post("/", async (req, res) => {
       rating,
       platforms,
       createInDb,
+      img,
       genres,
     } = req.body;
     if (!name || !description || !platforms)
@@ -50,6 +52,7 @@ router.post("/", async (req, res) => {
       released,
       rating,
       platforms,
+      img,
       createInDb,
     });
 

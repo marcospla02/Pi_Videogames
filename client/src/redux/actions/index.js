@@ -9,26 +9,26 @@ export const FILTER_BY_GENRES = "FILTER_BY_GENRES";
 export const FILTER_BY_CREATE = "FILTER_BY_CREATE";
 export const ORDER_BY_RATING = "ORDER_BY_RATING";
 export const ORDER_BY_A_Z = "ORDER_BY_A_Z";
-export const DELETE_CARD = "DELETE_CARD";
 export const SET_LOADING = "SET_LOADING";
 export const SET_PAGE = "SET_PAGE";
 export const LOADING_PAGE = "LOADING_PAGE";
-export const ERROR = "ERROR";
+// export const ERROR = "ERROR";
+export const FILTER_BY_PLATFORMS = "FILTER_BY_PLATFORMS";
 
-export const getByName = (name) => (dispatch) => {
+export const getAllVideogames = () => (dispatch) => {
   return axios
-    .get(`http://localhost:3001/videogames?name=${name}`)
-    .then((res) => dispatch({ type: GET_BY_NAME, payload: res.data }))
+    .get("http://localhost:3001/videogames")
+    .then((res) => dispatch({ type: GET_ALL_VIDEOGAME, payload: res.data }))
     .catch(
       (err) => console.log(err.response.data)
       //dispatch({ type: ERROR, payload: err.response.data })
     );
 };
 
-export const getAllVideogames = () => (dispatch) => {
+export const getByName = (name) => (dispatch) => {
   return axios
-    .get("http://localhost:3001/videogames")
-    .then((res) => dispatch({ type: GET_ALL_VIDEOGAME, payload: res.data }))
+    .get(`http://localhost:3001/videogames?name=${name}`)
+    .then((res) => dispatch({ type: GET_BY_NAME, payload: res.data }))
     .catch(
       (err) => console.log(err.response.data)
       //dispatch({ type: ERROR, payload: err.response.data })
@@ -89,6 +89,6 @@ export const orderAlphabetical = (payload) => {
   return { type: ORDER_BY_A_Z, payload };
 };
 
-// export const deleteCard = (payload) => {
-//   return { type: DELETE_CARD, payload };
-// };
+export const filterByPlatform = (payload) => {
+  return { type: FILTER_BY_PLATFORMS, payload };
+};

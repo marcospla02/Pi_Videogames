@@ -1,20 +1,10 @@
 const { API_KEY } = process.env;
 const axios = require("axios");
 const { Videogame, Genre } = require("../db");
-const getDbInfo = require("./getDbInfo");
 
 const getById = async (id) => {
   if (id.length > 6) {
     // si es mayor es de la base de datos
-    // let allGame = await getDbInfo();
-    // allGame = allGame.filter((vg) => vg.id === id);
-    // allGame = allGame.map((vg) => {
-    //   return {
-    //     ...vg.dataValues,
-    //     genres: vg.genres.map((genre) => genre.name),
-    //   };
-    // });
-    // return allGame;
     let game = await Videogame.findAll({
       where: { id: id },
       include: {

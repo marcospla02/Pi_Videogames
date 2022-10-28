@@ -3,7 +3,7 @@ import { getByName } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import style from "./searchBar.module.css";
 
-const SearchBar = ({ setCurrentPage }) => {
+const SearchBar = () => {
   const [searchByName, setSearchByName] = useState("");
   const dispatch = useDispatch();
 
@@ -15,7 +15,6 @@ const SearchBar = ({ setCurrentPage }) => {
   const handlerSubmit = async (event) => {
     event.preventDefault();
     await dispatch(getByName(searchByName));
-    setCurrentPage(1);
     event.target.reset();
   };
 

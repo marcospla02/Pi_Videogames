@@ -37,6 +37,7 @@
 .button:hover {
   background-color: #3737376f;
   transition: background-color 0.7s;
+  color: white;
 }
 
 .linkedIn {
@@ -56,4 +57,5 @@
 .linkedIn:hover {
   background-color: #3737376f;
   transition: background-color 0.7s;
+  color: white;
 }

@@ -2,40 +2,45 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   filterByCreate,
+  filterByPlatform,
   filterVideogameByGenre,
   orderAlphabetical,
   orderByRating,
 } from "../../redux/actions";
 import style from "./Filtrado.module.css";
 
-const Filtrado = ({ setCurrentPage, setOrder }) => {
+const Filtrado = ({ setOrder }) => {
   const dispatch = useDispatch();
   const vgLoaded = useSelector((state) => state.vgLoaded);
 
-  const handlerSort = (event) => {
+  const handlerSortAlphabetical = (event) => {
     event.preventDefault();
     dispatch(orderAlphabetical(event.target.value));
     setOrder(event.target.value);
-    setCurrentPage(1);
   };
 
-  const changeHandlerRating = (event) => {
+  const handlerSortRating = (event) => {
     event.preventDefault();
     dispatch(orderByRating(event.target.value));
-    setCurrentPage(1);
     setOrder(event.target.value);
   };
 
-  const changeHandler = (event) => {
+  const changeHandlerGenre = (event) => {
+    event.preventDefault();
     dispatch(filterVideogameByGenre(event.target.value));
     setOrder(event.target.value);
-    setCurrentPage(1);
   };
 
   const changeHandlerCreate = (event) => {
+    event.preventDefault();
     dispatch(filterByCreate(event.target.value));
     setOrder(event.target.value);
-    setCurrentPage(1);
+  };
+
+  const changeHandlerPlatform = (event) => {
+    event.preventDefault();
+    dispatch(filterByPlatform(event.target.value));
+    setOrder(event.target.value);
   };
 
   return (
@@ -51,7 +56,7 @@ const Filtrado = ({ setCurrentPage, setOrder }) => {
         </optgroup>
       </select>
       <select
-        onChange={(event) => changeHandler(event)}
+        onChange={(event) => changeHandlerGenre(event)}
         className={style.filters}
       >
         <optgroup label="Genres">
@@ -78,7 +83,30 @@ const Filtrado = ({ setCurrentPage, setOrder }) => {
         </optgroup>
       </select>
       <select
-        onChange={(event) => changeHandlerRating(event)}
+        onChange={(e) => changeHandlerPlatform(e)}
+        className={style.filters}
+      >
+        <optgroup label="Platforms">
+          <option value="all">All</option>
+          <option value="PC">PC</option>,
+          <option value="Xbox One">Xbox One</option>,
+          <option value="Xbox 360">Xbox 360</option>,
+          <option value="Xbox Series S/X">Xbox Series S/X</option>,
+          <option value="Xbox">Xbox</option>,
+          <option value="PlayStation 5">PlayStation 5</option>,
+          <option value="PlayStation 4">PlayStation 4</option>,
+          <option value="PlayStation 3">PlayStation 3</option>,
+          <option value="PlayStation 2">PlayStation 2</option>,
+          <option value="Nintendo Switch">Nintendo Switch</option>,
+          <option value="iOS">iOS</option>,
+          <option value="Android">Android</option>,
+          <option value="macOS">macOS</option>,
+          <option value="Linux">Linux</option>,
+        </optgroup>
+      </select>
+
+      <select
+        onChange={(event) => handlerSortRating(event)}
         className={style.filters}
       >
         <optgroup label="Rating ">
@@ -88,7 +116,7 @@ const Filtrado = ({ setCurrentPage, setOrder }) => {
         </optgroup>
       </select>
       <select
-        onChange={(event) => handlerSort(event)}
+        onChange={(event) => handlerSortAlphabetical(event)}
         className={style.filters}
       >
         <optgroup label="Alphabetical">
