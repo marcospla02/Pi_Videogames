@@ -21,7 +21,6 @@ const VgCreate = () => {
     rating: "",
     description: "",
     platforms: "",
-    all: "",
   });
 
   const [input, setInput] = useState({
@@ -52,13 +51,11 @@ const VgCreate = () => {
       ? setErrors({
           ...errors,
           name: "The name is required",
-          all: "All fields with * are required",
         })
       : !regExpName.test(event.target.value)
       ? setErrors({
           ...errors,
           name: "No special characters",
-          all: "All fields with * are required",
         })
       : setErrors({ ...errors, name: "" });
 
@@ -83,13 +80,11 @@ const VgCreate = () => {
       ? setErrors({
           ...errors,
           description: "The description is required",
-          all: "All fields with * are required",
         })
       : !regExpDescription.test(event.target.value)
       ? setErrors({
           ...errors,
           description: "Cannot exceed 255 characters",
-          all: "All fields with * are required",
         })
       : setErrors({ ...errors, description: "" });
 
@@ -110,15 +105,6 @@ const VgCreate = () => {
 
   const handlerSelectPlatform = (event) => {
     if (!input.platforms.find((plat) => plat == event.target.value)) {
-      input.platforms.length <= 0
-        ? setErrors({
-            ...errors,
-            platforms:
-              "It is not an error, it is a warning, platforms must have at least 1",
-            all: "All fields with * are required",
-          })
-        : setErrors({ ...errors, platforms: "" });
-
       setInput({
         ...input,
         platforms: [...input.platforms, event.target.value],
@@ -250,13 +236,14 @@ const VgCreate = () => {
                   </optgroup>
                 </select>
               </div>
-
-              {errors.platforms && (
-                <p className={style.warning}>{errors.platforms}</p>
-              )}
-
-              {errors.all && <span>{errors.all}</span>}
-              <br />
+              <ul>
+                <li>
+                  <p className={style.leyend}>Platforms must have at least 1</p>
+                </li>
+                <li>
+                  <p className={style.leyend}>All fields with * are required</p>
+                </li>
+              </ul>
 
               <button
                 type="submit"
