@@ -24,7 +24,7 @@ const Home = () => {
   );
 
   const paginated = (number) => {
-    setCurrentPage(number); // caundo cambie la pagina se cambian todos los indices
+    setCurrentPage(number); // cuando cambie la pagina se cambian todos los indices
   }; // ej: paginado 2 se va a setear la pagina en el 2 entonces cambia el estado por lo que se renderiza de nuevo
 
   useEffect(() => {
@@ -51,12 +51,14 @@ const Home = () => {
       <Link to="/create">
         <button className={style.buttons}>Create Videogame</button>
       </Link>
-      <button onClick={(e) => handlerClick(e)} className={style.buttons}>
-        Reset filters/games
-      </button>
-      <Filtrado setOrder={setOrder} />
 
-      <Paginated paginated={paginated} videogames={videogames.length} />
+      <Filtrado setOrder={setOrder} setCurrentPage={setCurrentPage} />
+
+      <Paginated
+        paginated={paginated}
+        videogames={videogames.length}
+        currentPage={currentPage}
+      />
 
       <div className={style.container}>
         {fifteenVideogames.length ? (

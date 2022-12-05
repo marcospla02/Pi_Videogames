@@ -4,12 +4,13 @@ import {
   filterByCreate,
   filterByPlatform,
   filterVideogameByGenre,
+  getAllVideogames,
   orderAlphabetical,
   orderByRating,
 } from "../../redux/actions";
 import style from "./Filtrado.module.css";
 
-const Filtrado = ({ setOrder }) => {
+const Filtrado = ({ setOrder, setCurrentPage }) => {
   const dispatch = useDispatch();
   const vgLoaded = useSelector((state) => state.vgLoaded);
 
@@ -43,11 +44,31 @@ const Filtrado = ({ setOrder }) => {
     setOrder(event.target.value);
   };
 
+  const handlerClick = (event) => {
+    event.preventDefault();
+    dispatch(getAllVideogames());
+    document.getElementById("all").selectedIndex = 0;
+    document.getElementById("all1").selectedIndex = 0;
+    document.getElementById("all2").selectedIndex = 0;
+    document.getElementById("all3").selectedIndex = 0;
+    document.getElementById("all4").selectedIndex = 0;
+    setCurrentPage(1);
+  };
+
   return (
     <div className={style.all}>
+      <div className={style.containerButton}>
+        <button
+          onClick={(e) => handlerClick(e)}
+          className={style.buttonsFilter}
+        >
+          Reset filters/games
+        </button>
+      </div>
       <select
         onChange={(event) => changeHandlerCreate(event)}
         className={style.filters}
+        id="all"
       >
         <optgroup label="Games">
           <option value="all">All</option>
@@ -58,6 +79,7 @@ const Filtrado = ({ setOrder }) => {
       <select
         onChange={(event) => changeHandlerGenre(event)}
         className={style.filters}
+        id="all1"
       >
         <optgroup label="Genres">
           <option value="All">All Genres</option>
@@ -85,6 +107,7 @@ const Filtrado = ({ setOrder }) => {
       <select
         onChange={(e) => changeHandlerPlatform(e)}
         className={style.filters}
+        id="all2"
       >
         <optgroup label="Platforms">
           <option value="all">All</option>
@@ -108,9 +131,9 @@ const Filtrado = ({ setOrder }) => {
       <select
         onChange={(event) => handlerSortRating(event)}
         className={style.filters}
+        id="all3"
       >
         <optgroup label="Rating ">
-          <option value="all">All</option>
           <option value="max">Max</option>
           <option value="min">Min</option>
         </optgroup>
@@ -118,6 +141,7 @@ const Filtrado = ({ setOrder }) => {
       <select
         onChange={(event) => handlerSortAlphabetical(event)}
         className={style.filters}
+        id="all4"
       >
         <optgroup label="Alphabetical">
           <option value="asc">A-Z</option>

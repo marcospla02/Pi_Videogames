@@ -31,6 +31,14 @@ const VgDetail = (props) => {
     var platform = vgDetail.platforms.join(" - ");
   }
 
+  if (vgDetail.description) {
+    var description = vgDetail.description.split("<p>").join("");
+    description = description.split("</p>").join(" ");
+    description = description.split("<br>").join(" ");
+    description = description.split("</br>").join(" ");
+    description = description.split("<br />").join(" ");
+  }
+
   return (
     <div className={style.detail}>
       {Object.keys(vgDetail).length === 0 ? (
@@ -61,7 +69,7 @@ const VgDetail = (props) => {
               <strong> {platform}</strong>
             </p>
             <div className={style.description}>
-              <strong> {vgDetail.description}</strong>
+              <strong> {description}</strong>
             </div>
             <br />
             <Link to="/home">

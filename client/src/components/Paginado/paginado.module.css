@@ -1,18 +1,20 @@
-/* .paginado {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  text-decoration: none;
-} */
-/* .number {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  cursor: pointer;
-} */
-
 .number {
+  margin-left: 0.999vh;
+  font-size: 100%;
+  border: transparent;
+  border-radius: 5px;
+  font-size: 20px;
+  padding-left: 1vh;
+  cursor: pointer;
+  background-color: #3737376f;
+  color: white;
+  padding: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-top: -5px;
+}
+
+.number2 {
   margin-left: 0.999vh;
   font-size: 100%;
   border: transparent;
@@ -26,7 +28,7 @@
   padding-right: 8px;
 }
 
-.number:hover {
+.number2:hover {
   background-color: #3737376f;
   transition: background-color 0.7s;
   color: white;
@@ -36,8 +38,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  /* margin-left: 9.5%; */
-  margin-left: 39%;
   margin-top: 2%;
   padding: 1vh;
+}
+
+.containerNav {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }

@@ -6,7 +6,8 @@
 
 .button {
   border: solid 2px transparent;
-  border-radius: 9999px;
+  border-radius: 0 50px 50px 0;
+  margin-right: 50px;
   font-size: 1.3rem;
   transition: background-color 0.5s;
   cursor: pointer;
@@ -25,6 +26,7 @@
   color: white;
   background-color: transparent;
   border: none;
+  outline: none;
   font-size: 1.5rem;
   font-weight: 300;
 }

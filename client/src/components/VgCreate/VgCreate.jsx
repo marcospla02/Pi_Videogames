@@ -218,7 +218,6 @@ const VgCreate = () => {
               />
               <br />
               {errors.description && <span>{errors.description}</span>}
-              <br />
               <div>
                 <label>Platforms*: </label>
                 <select
@@ -235,15 +234,14 @@ const VgCreate = () => {
                     })}
                   </optgroup>
                 </select>
+                <legend className={style.leyend}>
+                  Platforms must have at least 1
+                </legend>
               </div>
-              <ul>
-                <li>
-                  <p className={style.leyend}>Platforms must have at least 1</p>
-                </li>
-                <li>
-                  <p className={style.leyend}>All fields with * are required</p>
-                </li>
-              </ul>
+              <br />
+              <legend className={style.leyend}>
+                All fields with * are required
+              </legend>
 
               <button
                 type="submit"

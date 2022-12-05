@@ -83,10 +83,11 @@ const rootReducer = (state = initialState, action) => {
 
     case FILTER_BY_GENRES:
       const allVideogames = state.allVgLoaded;
+      const videogames = state.vgLoaded;
       const filterByGenre =
         action.payload === "All"
           ? allVideogames
-          : allVideogames.filter((videogame) => {
+          : videogames.filter((videogame) => {
               return videogame.genres.includes(action.payload);
             });
       return {
@@ -96,14 +97,16 @@ const rootReducer = (state = initialState, action) => {
 
     case FILTER_BY_CREATE:
       const allVideogames1 = state.allVgLoaded;
+      const videogames2 = state.vgLoaded;
+
       const filterByCreate =
         action.payload === "all"
           ? allVideogames1
           : action.payload === "existing"
-          ? allVideogames1.filter((videogameApi) => {
+          ? videogames2.filter((videogameApi) => {
               return !videogameApi.createdInDb;
             })
-          : allVideogames1.filter((videogame) => {
+          : videogames2.filter((videogame) => {
               return videogame.createdInDb;
             });
       return {
@@ -114,9 +117,7 @@ const rootReducer = (state = initialState, action) => {
     case ORDER_BY_RATING:
       const allVideogames2 = state.vgLoaded;
       const order =
-        action.payload === "all"
-          ? allVideogames2
-          : action.payload === "max"
+        action.payload === "max"
           ? allVideogames2.sort((vg1, vg2) => {
               if (vg1.rating > vg2.rating) return -1;
               if (vg1.rating < vg2.rating) return 1;
@@ -152,7 +153,6 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case LOADING_PAGE:
-      console.log(action.payload, "es payload en reducer");
       return {
         ...state,
         loading: action.payload,
@@ -162,7 +162,7 @@ const rootReducer = (state = initialState, action) => {
       const filterByPlatform =
         action.payload === "all"
           ? state.allVgLoaded
-          : state.allVgLoaded.filter((vg) =>
+          : state.vgLoaded.filter((vg) =>
               vg.platforms.includes(action.payload)
             );
       return {
